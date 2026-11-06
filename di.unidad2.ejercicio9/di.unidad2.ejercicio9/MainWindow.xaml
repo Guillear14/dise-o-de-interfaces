@@ -1,10 +1,10 @@
 <!-- ========================================================================== -->
 <!-- PROYECTO: di.unidad2.ejercicio9                                            -->
 <!-- EJERCICIO: Unidad 2 - Ejercicio 9 (Formulario de Login Matisse Dividido)    -->
-<!-- CARACTERISTICAS: Ventana dividida en dos columnas:                        -->
-<!--                  - Izquierda: fondo blanco con logotipo y arte de Matisse. -->
-<!--                  - Derecha: fondo crema (#FAF5EE), mensaje de bienvenida,   -->
-<!--                    campos redondeados con icono y botón Inicio de Sesión.   -->
+<!-- CARACTERISTICAS: Ventana con fondo crema (#F8EDE2):                        -->
+<!--                  - Izquierda: logotipo IES Henri Matisse y arte Matisse.   -->
+<!--                  - Derecha: mensaje BIENVENIDOS, credenciales e inicio     -->
+<!--                    de sesión.                                              -->
 <!-- ========================================================================== -->
 
 <Window x:Class="di.unidad2.ejercicio9.MainWindow"
@@ -16,157 +16,161 @@
         xmlns:mat="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="IES Henri Matisse - Login"
-        Height="470" Width="720"
-        MinHeight="470" MinWidth="720"
+        Height="500" Width="780"
+        MinHeight="500" MinWidth="780"
         WindowStartupLocation="CenterScreen"
-        Background="#FAF5EE">
+        Background="#F7EDE2">
 
-    <Grid>
+    <Grid Margin="20">
         <Grid.ColumnDefinitions>
-            <!-- Columna izquierda: Ilustracion artística Matisse (45%) -->
-            <ColumnDefinition Width="45*" />
-            <!-- Columna derecha: Formulario de bienvenida y login (55%) -->
-            <ColumnDefinition Width="55*" />
+            <!-- Columna izquierda: Arte Matisse (48%) -->
+            <ColumnDefinition Width="48*" />
+            <!-- Columna derecha: Formulario de bienvenida (52%) -->
+            <ColumnDefinition Width="52*" />
         </Grid.ColumnDefinitions>
 
         <!-- ============================================================== -->
-        <!-- PANEL IZQUIERDO: ARTE MATISSE                                  -->
+        <!-- PANEL IZQUIERDO: LOGO Y ARTE MATISSE                           -->
         <!-- ============================================================== -->
-        <Border Grid.Column="0" Background="#FFFFFF">
-            <Grid Margin="18">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Margin="0,0,15,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-                <!-- Logotipo del IES Henri Matisse en la esquina superior izquierda -->
-                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,0,0,10">
-                    <Image Source="Recursos/iconos/matisse.png" 
-                           Height="22" 
-                           Stretch="Uniform" 
-                           HorizontalAlignment="Left" 
-                           RenderOptions.BitmapScalingMode="HighQuality" />
-                </StackPanel>
+            <!-- Logotipo IES HENRI MATISSE en azul -->
+            <Image Grid.Row="0"
+                   Source="Recursos/iconos/matisse_azul.png" 
+                   Height="26" 
+                   Stretch="Uniform" 
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Top"
+                   RenderOptions.BitmapScalingMode="HighQuality"
+                   Margin="5,0,0,10" />
 
-                <!-- Ilustracion central de Matisse -->
-                <Image Grid.Row="1" 
-                       Source="Recursos/iconos/LoginImagen.png" 
+            <!-- Ilustración artística de Matisse con tarjeta blanca de fondo -->
+            <Border Grid.Row="1"
+                    Background="White"
+                    CornerRadius="2"
+                    Padding="10"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+                <Image Source="Recursos/iconos/matisse_arte.png" 
                        Stretch="Uniform" 
-                       VerticalAlignment="Center" 
-                       HorizontalAlignment="Center"
-                       RenderOptions.BitmapScalingMode="HighQuality"
-                       Margin="10" />
-            </Grid>
-        </Border>
+                       MaxWidth="320"
+                       MaxHeight="360"
+                       RenderOptions.BitmapScalingMode="HighQuality" />
+            </Border>
+        </Grid>
 
         <!-- ============================================================== -->
         <!-- PANEL DERECHO: FORMULARIO DE ACCESO                            -->
         <!-- ============================================================== -->
-        <Border Grid.Column="1" Background="#FAF5EE">
-            <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Width="310">
-                <StackPanel Orientation="Vertical">
-                    
-                    <!-- Titulo Principal -->
-                    <TextBlock Text="BIENVENIDOS"
-                               FontSize="26"
-                               FontWeight="Bold"
-                               Foreground="#1E2022"
-                               HorizontalAlignment="Center"
-                               Margin="0,0,0,8" />
+        <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="320">
+            <StackPanel Orientation="Vertical">
+                
+                <!-- Titulo Principal -->
+                <TextBlock Text="BIENVENIDOS"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="#1C1C1E"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,10" />
 
-                    <!-- Mensaje de bienvenida / subtítulo -->
-                    <TextBlock Text="Para trabajar con nuestra aplicación, por favor,&#x0a;introducid vuestra credenciales para iniciar sesión"
-                               FontSize="11.5"
-                               Foreground="#75777A"
-                               TextAlignment="Center"
-                               TextWrapping="Wrap"
-                               LineHeight="16"
-                               HorizontalAlignment="Center"
-                               Margin="0,0,0,28" />
+                <!-- Mensaje de bienvenida / subtítulo -->
+                <TextBlock Text="Para trabajar con nuestra aplicación, por favor,&#x0a;introducid vuestra credenciales para iniciar sesión"
+                           FontSize="12"
+                           Foreground="#7D828A"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           LineHeight="17"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,32" />
 
-                    <!-- Campo: Nombre de usuario -->
-                    <Border Background="#EBF0F6"
-                            CornerRadius="3"
-                            Height="40"
-                            Margin="0,0,0,14"
-                            Padding="10,0,10,0">
-                        <Grid VerticalAlignment="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            
-                            <!-- Icono de usuario -->
-                            <mat:PackIcon Grid.Column="0" 
-                                          Kind="AccountOutline" 
-                                          Width="20" 
-                                          Height="20" 
-                                          Foreground="#7B828C" 
-                                          VerticalAlignment="Center"
-                                          Margin="0,0,10,0" />
+                <!-- Campo: Nombre de usuario -->
+                <Border Background="#EEF4F8"
+                        CornerRadius="3"
+                        Height="44"
+                        Margin="0,0,0,16"
+                        Padding="12,0,12,0">
+                    <Grid VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <!-- Icono de usuario -->
+                        <mat:PackIcon Grid.Column="0" 
+                                      Kind="AccountOutline" 
+                                      Width="20" 
+                                      Height="20" 
+                                      Foreground="#6C7A89" 
+                                      VerticalAlignment="Center"
+                                      Margin="0,0,10,0" />
 
-                            <!-- Entrada de texto con marca de agua -->
-                            <TextBox Grid.Column="1"
-                                     mat:HintAssist.Hint="Nombre de usuario"
-                                     mat:HintAssist.Foreground="#8D95A1"
+                        <!-- Entrada de texto con marca de agua -->
+                        <TextBox Grid.Column="1"
+                                 mat:HintAssist.Hint="Nombre de usuario"
+                                 mat:HintAssist.Foreground="#8D9CAE"
+                                 mat:TextFieldAssist.UnderlineBrush="Transparent"
+                                 BorderThickness="0"
+                                 Background="Transparent"
+                                 Foreground="#2C3238"
+                                 FontSize="13"
+                                 VerticalAlignment="Center"
+                                 VerticalContentAlignment="Center"
+                                 Padding="0" />
+                    </Grid>
+                </Border>
+
+                <!-- Campo: Clave de acceso -->
+                <Border Background="#EEF4F8"
+                        CornerRadius="3"
+                        Height="44"
+                        Margin="0,0,0,24"
+                        Padding="12,0,12,0">
+                    <Grid VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Icono de candado / clave -->
+                        <mat:PackIcon Grid.Column="0" 
+                                      Kind="LockOutline" 
+                                      Width="20" 
+                                      Height="20" 
+                                      Foreground="#6C7A89" 
+                                      VerticalAlignment="Center"
+                                      Margin="0,0,10,0" />
+
+                        <!-- Entrada de contraseña con marca de agua -->
+                        <PasswordBox Grid.Column="1"
+                                     mat:HintAssist.Hint="Clave de acceso"
+                                     mat:HintAssist.Foreground="#8D9CAE"
+                                     mat:TextFieldAssist.UnderlineBrush="Transparent"
                                      BorderThickness="0"
                                      Background="Transparent"
                                      Foreground="#2C3238"
-                                     FontSize="12.5"
+                                     FontSize="13"
                                      VerticalAlignment="Center"
                                      VerticalContentAlignment="Center"
                                      Padding="0" />
-                        </Grid>
-                    </Border>
+                    </Grid>
+                </Border>
 
-                    <!-- Campo: Clave de acceso -->
-                    <Border Background="#EBF0F6"
-                            CornerRadius="3"
-                            Height="40"
-                            Margin="0,0,0,22"
-                            Padding="10,0,10,0">
-                        <Grid VerticalAlignment="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-
-                            <!-- Icono de candado / clave -->
-                            <mat:PackIcon Grid.Column="0" 
-                                          Kind="LockOutline" 
-                                          Width="19" 
-                                          Height="19" 
-                                          Foreground="#7B828C" 
-                                          VerticalAlignment="Center"
-                                          Margin="0,0,10,0" />
-
-                            <!-- Entrada de password con marca de agua -->
-                            <PasswordBox Grid.Column="1"
-                                         mat:HintAssist.Hint="Clave de acceso"
-                                         mat:HintAssist.Foreground="#8D95A1"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         Foreground="#2C3238"
-                                         FontSize="12.5"
-                                         VerticalAlignment="Center"
-                                         VerticalContentAlignment="Center"
-                                         Padding="0" />
-                        </Grid>
-                    </Border>
-
-                    <!-- Boton: Inicio de Sesión -->
-                    <Button Content="Inicio de Sesión"
-                            Background="#1856A1"
-                            Foreground="White"
-                            BorderThickness="0"
-                            Height="38"
-                            FontSize="12.5"
-                            FontWeight="SemiBold"
-                            mat:ButtonAssist.CornerRadius="3"
-                            HorizontalAlignment="Stretch"
-                            Cursor="Hand" />
-                </StackPanel>
-            </Grid>
-        </Border>
+                <!-- Boton: Inicio de Sesión -->
+                <Button Content="Inicio de Sesión"
+                        Background="#17549C"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Height="40"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        mat:ButtonAssist.CornerRadius="3"
+                        HorizontalAlignment="Stretch"
+                        Cursor="Hand" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
